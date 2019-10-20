@@ -1,0 +1,23 @@
+.block {
+  border: 3px solid red;
+  font-size: 3rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.shown {
+  border: 3px solid yellow;
+}
+
+.hidden {
+  border: 3px solid black;
+}
+
+.viewed {
+  border: 3px solid green;
+}
+
+.scroll-block {
+  max-height: 300px;
+  overflow-y: scroll;
+}

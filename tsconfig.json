@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@smip/ngx-viewed": [
+        "dist/smip/ngx-viewed"
+      ],
+      "@smip/ngx-viewed/*": [
+        "dist/smip/ngx-viewed/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
