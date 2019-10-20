@@ -1,8 +1,30 @@
 {
   "name": "@smip/ngx-viewed",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Angular library for fixing the fact of viewing posts, comments, images, etc.",
+  "keywords": [
+    "angular 6",
+    "angular 7",
+    "angular 8",
+    "angular6",
+    "angular7",
+    "angular8",
+    "viewed post",
+    "viewed comment",
+    "viewed counter"
+  ],
+  "author": "Aleksandr Sokolov <sokolov.aleksandr@yahoo.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Smip/ngx-viewed.git"
+  },
+  "homepage": "https://github.com/Smip/ngx-viewed",
+  "bugs": {
+    "url": "https://github.com/Smip/ngx-viewed/issues"
+  },
   "peerDependencies": {
-    "@angular/common": "^8.2.11",
-    "@angular/core": "^8.2.11"
+    "@angular/common": ">=6.0.0 || >=7.0.0 || >=8.0.0",
+    "@angular/core": ">=6.0.0 || >=7.0.0 || >=8.0.0"
   }
 }
