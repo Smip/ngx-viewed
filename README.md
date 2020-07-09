@@ -6,7 +6,7 @@ Angular library for fixing the fact of viewing posts, comments, images, etc.
 
 ## Installation
 
-Run `npm install @smip/ngx-viewed sticky-sidebar -S`
+Run `npm install @smip/ngx-viewed -S`
 
 Add `NgxViewedModule` import to your module:
 
