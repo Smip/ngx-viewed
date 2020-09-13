@@ -1,8 +1,12 @@
 {
   "name": "@smip/ngx-viewed",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Angular library for fixing the fact of viewing posts, comments, images, etc.",
   "keywords": [
+    "angular 10",
+    "angular 9",
+    "angular10",
+    "angular9",
     "angular 6",
     "angular 7",
     "angular 8",
@@ -23,8 +27,11 @@
   "bugs": {
     "url": "https://github.com/Smip/ngx-viewed/issues"
   },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "peerDependencies": {
-    "@angular/common": ">=6.0.0 || >=7.0.0 || >=8.0.0",
-    "@angular/core": ">=6.0.0 || >=7.0.0 || >=8.0.0"
+    "@angular/common": ">=6.0.0 || >=7.0.0 || >=8.0.0 || >=9.0.0 || >=10.0.0",
+    "@angular/core": ">=6.0.0 || >=7.0.0 || >=8.0.0 || >=9.0.0 || >=10.0.0"
   }
 }

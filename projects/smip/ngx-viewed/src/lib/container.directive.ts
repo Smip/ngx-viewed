@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import {ContainerWatcherDirective} from './container-watcher.directive';
 import {BehaviorSubject, from, fromEvent, merge, of, Subject} from 'rxjs';
-import {auditTime, filter, flatMap, takeUntil} from 'rxjs/operators';
+import {auditTime, filter, mergeMap, takeUntil} from 'rxjs/operators';
 
 @Directive({
   selector: '[ngxViewedContainer]',
@@ -62,9 +62,9 @@ export class ContainerDirective implements OnInit, OnDestroy, AfterContentInit {
     this.containerIsVisible = new BehaviorSubject<boolean>(false);
     merge(
       from(['scroll', 'resize'])
-        .pipe(flatMap(eventName => fromEvent(window, eventName))),
+        .pipe(mergeMap(eventName => fromEvent(window, eventName))),
       from(['hidden', 'visibilitychange', 'scroll', 'resize'])
-        .pipe(flatMap(eventName => fromEvent(document, eventName))),
+        .pipe(mergeMap(eventName => fromEvent(document, eventName))),
       of(true),
     ).pipe(
       auditTime(this.auditTime),

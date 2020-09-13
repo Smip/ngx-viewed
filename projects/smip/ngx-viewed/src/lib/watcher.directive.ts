@@ -1,6 +1,6 @@
 import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {BehaviorSubject, from, fromEvent, merge, of, Subject} from 'rxjs';
-import {auditTime, flatMap, takeUntil} from 'rxjs/operators';
+import {auditTime, mergeMap, takeUntil} from 'rxjs/operators';
 import {pausableTimer} from './pausableTimer';
 
 @Directive({
@@ -58,9 +58,9 @@ export class WatcherDirective implements OnInit, OnDestroy {
 
     merge(
       from(['scroll', 'resize'])
-        .pipe(flatMap(eventName => fromEvent(window, eventName))),
+        .pipe(mergeMap(eventName => fromEvent(window, eventName))),
       from(['hidden', 'visibilitychange', 'scroll', 'resize'])
-        .pipe(flatMap(eventName => fromEvent(document, eventName))),
+        .pipe(mergeMap(eventName => fromEvent(document, eventName))),
       of(true),
     ).pipe(
       auditTime(this.auditTime),

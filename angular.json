@@ -22,7 +22,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -45,7 +45,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -136,6 +135,11 @@
           "options": {
             "tsConfig": "projects/smip/ngx-viewed/tsconfig.lib.json",
             "project": "projects/smip/ngx-viewed/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/smip/ngx-viewed/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -159,6 +163,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngx-viewed"
+    }
+  },
+  "defaultProject": "ngx-viewed",
+  "cli": {
+    "analytics": "7de8e899-cb51-4c8a-812b-6e84aefdc211"
+  }
 }
