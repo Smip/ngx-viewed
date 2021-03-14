@@ -1,6 +1,6 @@
 {
   "name": "@smip/ngx-viewed",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Angular library for fixing the fact of viewing posts, comments, images, etc.",
   "keywords": [
     "angular 10",

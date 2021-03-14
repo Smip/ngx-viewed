@@ -36,10 +36,18 @@ export class ContainerDirective implements OnInit, OnDestroy, AfterContentInit {
   }
 
   subscribeToChild(child) {
-    child.timer.stepTimer.subscribe(x => {
+    child.timer.stepTimer
+      .pipe(
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe(x => {
       child.ngxViewedTick.emit({id: child.ngxViewedId, time: x});
     });
-    child.timer.completeTimer.subscribe(() => {
+    child.timer.completeTimer
+      .pipe(
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe(() => {
       child.ngxViewedViewed.emit({id: child.ngxViewedId});
       child.ngOnDestroy();
     });
@@ -47,7 +55,11 @@ export class ContainerDirective implements OnInit, OnDestroy, AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    this.childrenElements.changes.pipe(filter(child => child && !child.isObservable)).subscribe(newChildren => {
+    this.childrenElements.changes
+      .pipe(
+        filter(child => child && !child.isObservable),
+        takeUntil(this.unsubscribe$)
+      ).subscribe(newChildren => {
       newChildren.forEach(child => this.subscribeToChild(child));
     });
     this.childrenElements.forEach(child => this.subscribeToChild(child));

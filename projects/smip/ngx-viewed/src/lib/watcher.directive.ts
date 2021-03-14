@@ -47,10 +47,18 @@ export class WatcherDirective implements OnInit, OnDestroy {
     }
     this.paused = new BehaviorSubject<boolean>(true);
     this.timer = pausableTimer(this.paused, this.unsubscribe$, this.timeToViewed, this.tickTime);
-    this.timer.stepTimer.subscribe(x => {
+    this.timer.stepTimer
+      .pipe(
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe(x => {
       this.ngxViewedTick.emit({id: this.ngxViewedId, time: x});
     });
-    this.timer.completeTimer.subscribe(() => {
+    this.timer.completeTimer
+      .pipe(
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe(() => {
       this.ngxViewedViewed.emit({id: this.ngxViewedId});
       this.ngOnDestroy();
     });

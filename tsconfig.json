@@ -20,10 +20,10 @@
     ],
     "paths": {
       "@smip/ngx-viewed": [
-        "dist/smip/ngx-viewed"
+        "projects/smip/ngx-viewed/src/public-api"
       ],
       "@smip/ngx-viewed/*": [
-        "dist/smip/ngx-viewed/*"
+        "projects/smip/ngx-viewed/src/lib/*"
       ]
     }
   },
