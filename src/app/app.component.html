@@ -4,7 +4,7 @@
     class="block"
     [ngClass]="{shown: blocks[0].visible, hidden: !blocks[0].visible, viewed: blocks[0].viewed}"
     ngxViewedWatcher
-    [timeToViewed]="20000"
+    [timeToViewed]="60000"
     [visiblePercent]="0.3"
     (ngxViewedTick)="blocks[0].tick = $event"
     (ngxViewedShown)="blocks[0].visible = true"
@@ -77,7 +77,7 @@
     ngxViewedWatcher
     [ngClass]="{shown: blocks[5].visible, hidden: !blocks[5].visible, viewed: blocks[5].viewed}"
     [timeToViewed]="30000"
-    [visiblePercent]="1"
+    [visiblePercent]="0.8"
     (ngxViewedShown)="blocks[5].visible = true"
     (ngxViewedHidden)="blocks[5].visible = false"
     (ngxViewedViewed)="blocks[5].viewed = true"
@@ -97,12 +97,13 @@
     style="border: 0;"
   >
     <p>And if content in block with scroll?</p>
-    <div class="scroll-block" ngxViewedContainer>
+    <div class="scroll-block" #scrollBlock>
       <div
-        ngxViewedContainerWatcher
+        ngxViewedWatcher
         style="margin-bottom: 2rem;"
         [ngClass]="{shown: blocks[6].visible, hidden: !blocks[6].visible, viewed: blocks[6].viewed}"
         [timeToViewed]="3000"
+        [parentScroll]="scrollBlock"
         (ngxViewedShown)="blocks[6].visible = true"
         (ngxViewedHidden)="blocks[6].visible = false"
         (ngxViewedViewed)="blocks[6].viewed = true"
@@ -110,10 +111,11 @@
         <p>Post 1</p>
       </div>
       <div
-        ngxViewedContainerWatcher
+        ngxViewedWatcher
         style="margin-bottom: 2rem;"
         [ngClass]="{shown: blocks[7].visible, hidden: !blocks[7].visible, viewed: blocks[7].viewed}"
         [timeToViewed]="3000"
+        [parentScroll]="scrollBlock"
         (ngxViewedShown)="blocks[7].visible = true"
         (ngxViewedHidden)="blocks[7].visible = false"
         (ngxViewedViewed)="blocks[7].viewed = true"
@@ -121,10 +123,11 @@
         <p>Post 2</p>
       </div>
       <div
-        ngxViewedContainerWatcher
+        ngxViewedWatcher
         style="margin-bottom: 2rem;"
         [ngClass]="{shown: blocks[8].visible, hidden: !blocks[8].visible, viewed: blocks[8].viewed}"
         [timeToViewed]="3000"
+        [parentScroll]="scrollBlock"
         (ngxViewedShown)="blocks[8].visible = true"
         (ngxViewedHidden)="blocks[8].visible = false"
         (ngxViewedViewed)="blocks[8].viewed = true"
@@ -132,10 +135,11 @@
         <p>Post 3</p>
       </div>
       <div
-        ngxViewedContainerWatcher
+        ngxViewedWatcher
         style="margin-bottom: 2rem;"
         [ngClass]="{shown: blocks[9].visible, hidden: !blocks[9].visible, viewed: blocks[9].viewed}"
         [timeToViewed]="7000"
+        [parentScroll]="scrollBlock"
         (ngxViewedShown)="blocks[9].visible = true"
         (ngxViewedHidden)="blocks[9].visible = false"
         (ngxViewedViewed)="blocks[9].viewed = true"
