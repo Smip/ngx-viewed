@@ -15,6 +15,8 @@ export class WatcherDirective implements OnInit, OnDestroy, AfterViewInit {
 
   @Input() parentScroll: Element | null;
 
+  @Input() ngxViewedDisabled = false;
+
   @Output() ngxViewedViewed: EventEmitter<{ id: any }> = new EventEmitter();
   @Output() ngxViewedTick: EventEmitter<{ id: any, time: number }> = new EventEmitter();
   @Output() ngxViewedShown: EventEmitter<{ id: any }> = new EventEmitter();
@@ -32,7 +34,7 @@ export class WatcherDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-    if (!('IntersectionObserver' in window)) {
+    if (!('IntersectionObserver' in window) || this.ngxViewedDisabled) {
       return;
     }
     if (this.visiblePercent > 1 || this.visiblePercent < 0) {
@@ -75,7 +77,7 @@ export class WatcherDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (!('IntersectionObserver' in window)) {
+    if (!('IntersectionObserver' in window) || this.ngxViewedDisabled) {
       return;
     }
     this.observer = new IntersectionObserver( entries => {
@@ -93,15 +95,19 @@ export class WatcherDirective implements OnInit, OnDestroy, AfterViewInit {
           && entries[0].intersectionRect.height / parentRect.height >= this.visiblePercent
         )
       ) {
-        this.viewedAt = performance.now();
-        this.isVisible = true;
-        this.paused.next(false);
-        this.ngxViewedShown.emit({id: this.ngxViewedId});
+        if (!this.isVisible) {
+          this.viewedAt = performance.now();
+          this.isVisible = true;
+          this.paused.next(false);
+          this.ngxViewedShown.emit({id: this.ngxViewedId});
+        }
       } else {
-        this.isVisible = false;
-        this.visibleTime += performance.now() - this.viewedAt;
-        this.paused.next(true);
-        this.ngxViewedHidden.emit({id: this.ngxViewedId, time: Math.round(performance.now() - this.viewedAt)});
+        if (this.isVisible) {
+          this.isVisible = false;
+          this.visibleTime += performance.now() - this.viewedAt;
+          this.paused.next(true);
+          this.ngxViewedHidden.emit({id: this.ngxViewedId, time: Math.round(performance.now() - this.viewedAt)});
+        }
       }
     }, {
       threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]

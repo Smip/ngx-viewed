@@ -33,7 +33,8 @@ Add `ngxViewedWatcher` directive to element witch will be observable.
 
 Directive ngxViewedWatcher provide next input parameters:
 
-- **ngxViewedId**: _any_ - variable to help you handle outputs. Will be included in every callback. 
+- **ngxViewedId**: _any_ - variable to help you handle outputs. Will be included in every callback.
+- **ngxViewedDisabled**: _boolean_ - Disable directive.
 - **visiblePercent**: _number_ - value from 0 to 1. How element should be visible on the screen to start timer. Default: **0.8** (80%)
 - **timeToViewed**: _number_ - value from 0 in ms. Time when library will emit output event. After this time library finish observe element. Default: **3000**
 - ~~**auditTime**: _number_ - value from 0 in ms. To optimize the work, the library checks the visibility of the element no more than once every **x** ms. Default: **500**~~ **[deprecated]**
