@@ -73,7 +73,9 @@ export class WatcherDirective implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-    this.observer.disconnect();
+    if (!!this.observer) {
+      this.observer.disconnect();
+    }
   }
 
   ngAfterViewInit(): void {
