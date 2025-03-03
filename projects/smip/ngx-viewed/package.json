@@ -1,13 +1,13 @@
 {
   "name": "@smip/ngx-viewed",
-  "version": "12.0.0",
+  "version": "13.0.0",
   "description": "Angular library for fixing the fact of viewing posts, comments, images, etc.",
   "keywords": [
+    "angular 13",
     "angular 12",
     "angular 11",
     "angular 10",
     "angular 9",
-    "angular 6",
     "viewed post",
     "viewed comment",
     "viewed counter"
@@ -26,7 +26,7 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common": ">=12.0.0",
-    "@angular/core": ">=12.0.0"
+    "@angular/common": ">=13.0.0",
+    "@angular/core": ">=13.0.0"
   }
 }

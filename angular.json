@@ -102,19 +102,6 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -125,6 +112,15 @@
             "production": {
               "devServerTarget": "ngx-viewed:serve:production"
             }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
@@ -156,14 +152,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/smip/ngx-viewed/tsconfig.lib.json",
-              "projects/smip/ngx-viewed/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/smip/ngx-viewed/**/*.ts",
+              "projects/smip/ngx-viewed/**/*.html"
             ]
           }
         }
@@ -172,6 +165,7 @@
   },
   "defaultProject": "ngx-viewed",
   "cli": {
-    "analytics": "7de8e899-cb51-4c8a-812b-6e84aefdc211"
+    "analytics": "7de8e899-cb51-4c8a-812b-6e84aefdc211",
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
