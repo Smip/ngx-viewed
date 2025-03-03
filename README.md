@@ -10,17 +10,17 @@ The library uses [IntersectionObserver](https://developer.mozilla.org/docs/Web/A
 
 Run `npm install @smip/ngx-viewed -S`
 
-Add `NgxViewedModule` import to your module:
+Add `WatcherDirective` import to your module or component:
 
 ```typescript
-import { NgxViewedModule } from '@smip/ngx-viewed';
+import { WatcherDirective } from '@smip/ngx-viewed';
 
 ...
 
 @NgModule({
   imports: [
     ...
-    NgxViewedModule
+      WatcherDirective
     ...
   ],
   ...

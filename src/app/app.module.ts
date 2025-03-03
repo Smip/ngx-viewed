@@ -1,9 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {NgxViewedModule} from '@smip/ngx-viewed';
+import {WatcherDirective} from '@smip/ngx-viewed';
 
 @NgModule({
   declarations: [
@@ -11,8 +10,7 @@ import {NgxViewedModule} from '@smip/ngx-viewed';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    NgxViewedModule,
+    WatcherDirective,
   ],
   providers: [],
   bootstrap: [AppComponent]

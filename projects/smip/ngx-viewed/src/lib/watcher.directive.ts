@@ -5,6 +5,7 @@ import {pausableTimer} from './pausableTimer';
 
 @Directive({
   selector: '[ngxViewedWatcher]',
+  standalone: true,
 })
 export class WatcherDirective implements OnInit, OnDestroy, AfterViewInit {
   element: ElementRef;

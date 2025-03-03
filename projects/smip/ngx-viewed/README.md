@@ -10,17 +10,17 @@ The library uses [IntersectionObserver](https://developer.mozilla.org/docs/Web/A
 
 Run `npm install @smip/ngx-viewed -S`
 
-Add `NgxViewedModule` import to your module:
+Add `WatcherDirective` import to your module or component:
 
 ```typescript
-import { NgxViewedModule } from '@smip/ngx-viewed';
+import { WatcherDirective } from '@smip/ngx-viewed';
 
 ...
 
 @NgModule({
   imports: [
     ...
-    NgxViewedModule
+      WatcherDirective
     ...
   ],
   ...
@@ -43,7 +43,7 @@ Directive ngxViewedWatcher provide next input parameters:
 
 Outputs:
 
-- **ngxViewedViewed**: { id: any } - will be emitted once for every element after _timeToViewed_ ms. You can use it to fix fact of viewing. 
+- **ngxViewedViewed**: { id: any } - will be emitted once for every element after _timeToViewed_ ms. You can use it to fix fact of viewing.
 - **ngxViewedTick**: { id: any, time: number } - will be emitted every _tickTime_ ms.
 - **ngxViewedShown**: { id: any } - will be emitted when element is shown.
 - **ngxViewedHidden**: { id: any, time: number } - will be emitted when element is hidden.
@@ -52,15 +52,15 @@ Outputs:
 
 ```html
 <div
-    ngxViewedWatcher
-    [ngxViewedId]="'post1'"
-    [timeToViewed]="3000"
-    [visiblePercent]="0.8"
-    (ngxViewedTick)="onTick($event)"
-    (ngxViewedShown)="onShown($event)"
-    (ngxViewedHidden)="onHidden($event)"
-    (ngxViewedViewed)="onViewed($event)"
-  >
+  ngxViewedWatcher
+  [ngxViewedId]="'post1'"
+  [timeToViewed]="3000"
+  [visiblePercent]="0.8"
+  (ngxViewedTick)="onTick($event)"
+  (ngxViewedShown)="onShown($event)"
+  (ngxViewedHidden)="onHidden($event)"
+  (ngxViewedViewed)="onViewed($event)"
+>
 ```
 
 ### Deprecated in version 3.0
